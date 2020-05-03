@@ -1,6 +1,6 @@
-#Project 3 : Shape changer#
+# Project 3 : Shape changer
 
-##Description##
+## Description
 This program uses the buttons to:
 
 -clear the screen
@@ -10,11 +10,11 @@ This program uses the buttons to:
 
 The program sleeps after 10 seconds of no use
 
-##How to run##
+## How to run
 1- make load - to install the program on the msp430 device
 2- make clean - to clean the o files, and the elf file
 
-##What the files do##
+## What the files do
 |File  	   	|Description								|
 |---------------|-----------------------------------------------------------------------|
 |buzzer		|contains the sounds made when a switch is pressed			|
