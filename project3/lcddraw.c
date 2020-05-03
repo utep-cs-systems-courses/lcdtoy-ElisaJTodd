@@ -6,6 +6,7 @@
 #include "lcddraw.h"
 #include "string.h"
 #include "buzzer.h"
+#include "libTimer.h"
 
 char era[]="CLEAR";
 char col[]="COLOR";
@@ -103,7 +104,7 @@ void fillHexagon(u_char width, u_int colorBGR){
   u_int top = (screenHeight/2) - (height/2);
   for(int i=0; i<=height/2; i+=2){//row
     //columns
-    for(int k = 0; k<2; k++){
+    for(int k = 0; k<=2; k++){
       for(int j=0; j<=(i/2)+(width/4); j++){
       drawPixel(center-j, i+top+k, colorBGR); //left triangle
       drawPixel(center+j, i+top+k, colorBGR); //right triangle
@@ -193,6 +194,11 @@ void display_command(){
   clearScreen(COLOR_BLUE);
   drawString5x7((screenWidth/2)-(((strlen(str)+1)*7)/2),10, str, color2[color3], COLOR_BLUE);
   if (str[1] != 'L') draw_shape();
+  else {
+    clearScreen(COLOR_BLACK);
+    or_sr(0x10);//off
+    and_sr(~16); //on
+  }
 }
 
 void draw_shape(){
