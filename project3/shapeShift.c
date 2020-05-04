@@ -6,8 +6,8 @@
 #include "stateMachines.h"
 #include "lcdutils.h"
 #include "lcddraw.h"
-#include "p2switches.h"
 #include "string.h"
+int redrawScreen = 1;
 
 void main(void) 
 { 
@@ -16,7 +16,6 @@ void main(void)
   led_init(); // enable leds
   switch_init(); // enable buttons
   lcd_init();
-  u_char width = screenWidth, height = screenHeight;
   enableWDTInterrupts(); //timer for songs
   or_sr(0x18);  // CPU off, GIE on
 } 

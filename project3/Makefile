@@ -8,7 +8,7 @@ CC              = msp430-elf-gcc
 AS              = msp430-elf-as
 AR              = msp430-elf-ar
 
-libLcd.a:font-5x7.o lcdutils.o lcddraw.o
+libLcd.a: font-5x7.o lcdutils.o lcddraw.o
 	$(AR) crs $@ $^
 
 lcddraw.o: lcddraw.c lcddraw.h lcdutils.h
@@ -22,8 +22,8 @@ install: libLcd.a
 clean:
 	rm -f libLcd.a *.o *.elf
 
-p3.elf: ${COMMON_OBJECTS} p1_interrupt_handler.o wdInterruptHandler.o stateMachines.o buzzer.o led.o switches.o shapeShift.o ../lib/libTimer.a libLcd.a 
+shapeShift.elf: ${COMMON_OBJECTS} p1_interrupt_handler.o wdInterruptHandler.o stateMachines.o buzzer.o led.o switches.o shapeShift.o ../lib/libTimer.a libLcd.a 
 	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ -lTimer 
 
-load: p3.elf
+load: shapeShift.elf
 	msp430loader.sh $^

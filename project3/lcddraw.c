@@ -194,11 +194,7 @@ void display_command(){
   clearScreen(COLOR_BLUE);
   drawString5x7((screenWidth/2)-(((strlen(str)+1)*7)/2),10, str, color2[color3], COLOR_BLUE);
   if (str[1] != 'L') draw_shape();
-  else {
-    clearScreen(COLOR_BLACK);
-    or_sr(0x10);//off
-    and_sr(~16); //on
-  }
+  else clearScreen(COLOR_BLACK);
 }
 
 void draw_shape(){

@@ -1,4 +1,4 @@
-#ifndef stateMachine_included
+#ifndef stayteMachine_included
 #define stateMachine_included
 
 void state_advance();

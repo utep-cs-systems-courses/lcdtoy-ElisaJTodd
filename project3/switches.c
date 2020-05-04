@@ -6,6 +6,7 @@
 #include "lcdtypes.h"
 #include "lcddraw.h"
 #include "lcdutils.h"
+#include "libTimer.h"
 
 char switch_state_down; /* effectively boolean */
 char sw_1, sw_2, sw_3, sw_4;
@@ -13,9 +14,7 @@ char sw_1, sw_2, sw_3, sw_4;
 static unsigned char switches_last_reported;
 static unsigned char switches_current;
 
-static char
-switch_update_interrupt_sense()
-{
+static char switch_update_interrupt_sense(){
   char p2val = P2IN;
   switches_current = P2IN & SWITCHES;
   /* update switch interrupt to detect changes from current buttons */
@@ -45,6 +44,7 @@ switch_interrupt_handler()
   switch_state_down = (sw_1 || sw_2 || sw_3 || sw_4); //any switch pressed
   state_advance();
   if(switch_state_down){
+    and_sr(~16);
     display_command();
     green_on = 1;
     red_on = 0;
