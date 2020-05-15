@@ -8,7 +8,6 @@ void
 __interrupt_vec(PORT2_VECTOR) Port_2(){
    if (P2IFG & SWITCHES) {	      /* did a button cause this interrupt? */
     P2IFG &= ~SWITCHES;		      /* clear pending sw interrupts o*/
-    and_sr(0xffef); //cpu on
     switch_interrupt_handler();	/* single handler for all switches */
   }
 }

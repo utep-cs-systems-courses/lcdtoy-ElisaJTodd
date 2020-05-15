@@ -10,7 +10,6 @@
 
 char switch_state_down; /* effectively boolean */
 char sw_1, sw_2, sw_3, sw_4;
-
 static unsigned char switches_last_reported;
 static unsigned char switches_current;
 
@@ -42,10 +41,9 @@ switch_interrupt_handler()
   sw_3 = (p1val & SW3) ? 0 : 1;
   sw_4 = (p1val & SW4) ? 0 : 1; // 0 when switch down
   switch_state_down = (sw_1 || sw_2 || sw_3 || sw_4); //any switch pressed
-  state_advance();
   if(switch_state_down){
-    and_sr(~16);
-    display_command();
+    state_advance();
+    buzzer_init();
     green_on = 1;
     red_on = 0;
     led_changed = 1;
