@@ -16,6 +16,6 @@ main()
 
   clearScreen(COLOR_BLUE);
 
-  fillRectangle(50,50,60,60, COLOR_ORANGE);
-  
+  //  fillRectangle(50,50,60,60, COLOR_ORANGE);
+  trapezoid();
 }

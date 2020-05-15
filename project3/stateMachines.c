@@ -1,6 +1,6 @@
 #include <msp430.h>
 #include "stateMachines.h"
-#include "switches.h"
+#include "p2switches.h"
 #include "buzzer.h"
 #include "lcddraw.h"
 

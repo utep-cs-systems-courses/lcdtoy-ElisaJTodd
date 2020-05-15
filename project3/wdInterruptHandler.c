@@ -10,12 +10,8 @@ void
 __interrupt_vec(WDT_VECTOR) WDT(){
   static char second_count = 0;
   second_count++;
-  if (second_count == 30){
-    if(i<4) { //note length
+  if (second_count == 30 && i<4) { //note length
       play_notes(); 
-    }
-    redrawScreen = 1;
-    and_sr(~16);
-    second_count = 0;
+      second_count = 0;    
   }
 }

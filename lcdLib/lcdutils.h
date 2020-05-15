@@ -70,7 +70,7 @@ void lcd_writeColor(u_int colorBGR);
 #define COLOR_CYAN    		0xffe0
 #define COLOR_MAGENTA 		0xf81f
 #define COLOR_YELLOW  		0x07ff
-#define COLOR_ORANGE		0x053f
+#define COLOR_ORANGE		0x01ff
 #define COLOR_ORANGE_RED	0x023f
 #define COLOR_DARK_ORANGE	0x047f
 #define COLOR_GRAY		0xbdf7

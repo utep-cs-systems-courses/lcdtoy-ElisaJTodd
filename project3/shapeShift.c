@@ -1,12 +1,12 @@
 #include <msp430.h>
 #include "libTimer.h"
 #include "led.h"
-#include "switches.h"
 #include "buzzer.h"
 #include "stateMachines.h"
 #include "lcdutils.h"
 #include "lcddraw.h"
 #include "string.h"
+#include "p2switches.h"
 
 int redrawScreen = 1;
 int shape2 = 1;
@@ -23,7 +23,6 @@ void display_command(){
 }
 
 void draw_shape(){
-
   switch(shape2){
   case 1:
     fillRectangle(size2,size2,color2[color3]);
@@ -56,13 +55,31 @@ void main(void)
   led_init(); // enable leds
   switch_init(); // enable buttons
   enableWDTInterrupts(); //timer for songs
-  or_sr(0x8);  //GIE on
+  or_sr(0x8);
   for(;;) {
     while (!redrawScreen) { /**< Pause CPU if screen doesn't need updating */
-       or_sr(0x10);      /**< CPU OFF */
-}
+      /*testing that the cpu actually turns off
+      color3++;
+      display_command(); */
+      or_sr(0x10);      /**< CPU OFF */
+    }
     redrawScreen = 0;
     state_advance();
     display_command();
   }
 } 
+void wdt_c_handler(){
+  static char second_count = 0;
+  second_count++;
+  if (second_count == 30 && i<4) { //note length
+      play_notes(); 
+      second_count = 0;    
+  }
+  static short count = 0;
+  count ++;
+  if (count == 1) {
+    if (switch_state_down)
+      redrawScreen = 1;
+    count = 0;
+  }
+}

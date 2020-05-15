@@ -49,7 +49,6 @@ main()
   
   layerInit(&layer0);
   layerDraw(&layer0);
-  
-}
+ }
 
 

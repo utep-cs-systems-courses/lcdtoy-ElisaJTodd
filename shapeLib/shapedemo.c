@@ -31,13 +31,13 @@ main()
   configureClocks();
   lcd_init();
   shapeInit();
-  Vec2 rectPos = screenCenter;
+ Vec2 rectPos = screenCenter, circlePos = {30,screenHeight - 30};
 
   clearScreen(COLOR_BLUE);
   drawString5x7(20,20, "hello", COLOR_GREEN, COLOR_RED);
   shapeInit();
   
-  abDrawPos((AbShape*)&rect10, &rectPos, COLOR_ORANGE, COLOR_BLUE);
+  abDrawPos((AbShape*)&circle10, &circlePos, COLOR_ORANGE, COLOR_BLUE);
 
 }
 

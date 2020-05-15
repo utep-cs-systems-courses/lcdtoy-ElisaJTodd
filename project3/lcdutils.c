@@ -11,7 +11,7 @@
  
 #include "lcdutils.h"
 #include "msp430.h"
-#include "switches.h"
+#include "p2switches.h"
 
 u_char _orientation = 0;
 

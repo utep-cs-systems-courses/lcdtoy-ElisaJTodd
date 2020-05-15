@@ -1,4 +1,4 @@
-/** \file lcddraw.c
+/* \file lcddraw.c
  *  \brief Adapted from RobG's EduKit
  */
 #include "lcdutils.h"
@@ -113,4 +113,18 @@ void drawRectOutline(u_char colMin, u_char rowMin, u_char width, u_char height,
   /**< left & right */
   fillRectangle(colMin, rowMin, 1, height, colorBGR);
   fillRectangle(colMin + width, rowMin, 1, height, colorBGR);
+}
+
+void trapezoid(){
+  for(int i=0; i<10; i++){//rows
+    //rectangle
+    for(int k=0; k<20; k++){
+      drawPixel(30+k, 0+i, COLOR_YELLOW);
+      }
+    //triangles
+    for(int j=0; j<=i; j++){
+      drawPixel(29-j, 0+i, COLOR_ORANGE); //left triangle
+      drawPixel(50+j, 0+i, COLOR_RED); //right triangle
+    }
+  }
 }

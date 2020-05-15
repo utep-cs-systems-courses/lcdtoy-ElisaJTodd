@@ -21,9 +21,8 @@ install: libLcd.a
 
 clean:
 	rm -f libLcd.a *.o *.elf
-
-shapeShift.elf: ${COMMON_OBJECTS} p1_interrupt_handler.o wdInterruptHandler.o stateMachines.o buzzer.o led.o switches.o shapeShift.o ../lib/libTimer.a libLcd.a 
-	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ -lTimer 
+shapeShift.elf: ${COMMON_OBJECTS} stateMachines.o buzzer.o led.o shapeShift.o p2switches.o ../shape-motion-demo/wdt_handler.o ../lib/libTimer.a libLcd.a 
+	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@ -lTimer -lLcd -lShape -lCircle -lp2sw
 
 load: shapeShift.elf
 	msp430loader.sh $^
